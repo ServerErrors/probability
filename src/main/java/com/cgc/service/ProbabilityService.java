@@ -2,21 +2,25 @@ package com.cgc.service;
 
 import com.cgc.entity.Probability;
 
-public class ProbabilityService {
-    private static double facadeProbability = 0.6;
+import java.math.BigDecimal;
 
-    public Double getFacadeProbabilityOfTimes(int times) {
-        Double result = 1.0;
+public class ProbabilityService {
+    private static BigDecimal facadeProbability = new BigDecimal("0.6");
+
+    public BigDecimal getFacadeProbabilityOfTimes(int times) {
+        BigDecimal result = new BigDecimal("1");
         for (int i = 0; i < times; i++) {
-            result *= new Probability(facadeProbability).getFacadeProbability();
+            result = result.multiply(new Probability(facadeProbability)
+                    .getFacadeProbability());
         }
         return result;
     }
 
-    public Double getBehindProbabilityOfTimes(int times) {
-        Double result = 1.0;
+    public BigDecimal getBehindProbabilityOfTimes(int times) {
+        BigDecimal result = new BigDecimal("1");
         for (int i = 0; i < times; i++) {
-            result *= new Probability(facadeProbability).getBehindProbability();
+            result = result.multiply(new Probability(facadeProbability)
+                    .getBehindProbability());
         }
         return result;
     }

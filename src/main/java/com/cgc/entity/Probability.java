@@ -1,19 +1,21 @@
 package com.cgc.entity;
 
-public class Probability {
-    private Double facadeProbability;
-    private Double behindProbability;
+import java.math.BigDecimal;
 
-    public Probability(Double facadeProbability) {
+public class Probability {
+    private BigDecimal facadeProbability;
+    private BigDecimal behindProbability;
+
+    public Probability(BigDecimal facadeProbability) {
         this.facadeProbability = facadeProbability;
-        this.behindProbability = 1 - this.facadeProbability;
+        this.behindProbability = new BigDecimal("1").subtract(this.facadeProbability);
     }
 
-    public Double getFacadeProbability() {
+    public BigDecimal getFacadeProbability() {
         return facadeProbability;
     }
 
-    public Double getBehindProbability() {
+    public BigDecimal getBehindProbability() {
         return behindProbability;
     }
 
